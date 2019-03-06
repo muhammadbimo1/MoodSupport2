@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1091049062613",
+    "firebase_url": "https://moodsupport.firebaseio.com",
+    "project_id": "moodsupport",
+    "storage_bucket": "moodsupport.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091049062613:android:ab32c5a54d09f685",
+        "android_client_info": {
+          "package_name": "com.beemo.moodsupport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091049062613-dp7i1toosuatkqsjt8u0442somn4tokp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.beemo.moodsupport",
+            "certificate_hash": "cdfe3545151e0d8071c7798fbc9f4c1794750e10"
+          }
+        },
+        {
+          "client_id": "1091049062613-41l1ueupt298vlbvplupn1tqr7nkksef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwA28WYKaEqewjmip9bQa5l2MLBNhQJw0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091049062613-41l1ueupt298vlbvplupn1tqr7nkksef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
