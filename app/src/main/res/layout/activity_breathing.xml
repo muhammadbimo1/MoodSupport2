@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Breathing">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Deep Breathing"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="145dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                app:srcCompat="@drawable/breathing"
+                tools:layout_editor_absoluteX="112dp"
+                tools:layout_editor_absoluteY="47dp" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="As you breathe in, feel your belly rise. As you breathe out, feel your belly lower. The hand on your belly should move more than the one that's on your chest."
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="380dp" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Breathe in through your nose. Let your belly fill with air."
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="280dp" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Get comfortable. You can lie on your back in bed or on the floor with a pillow under your head and knees."
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="238dp" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Place one hand on your belly. Place the other hand on your chest."
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="336dp" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Breathe out through your nose."
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="308dp" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/button_onclick"
+                android:onClick="startbreathe"
+                android:text="Start"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

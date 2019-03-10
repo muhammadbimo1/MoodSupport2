@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainMenu">
+    tools:context=".MainProfileActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,22 +16,22 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/moodimage2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="profilemenu"
-                android:padding="20dp"
-                app:srcCompat="@drawable/profile" />
-
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Good Day,"
+                android:layout_marginTop="20dp"
+                android:text="Profile"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/button10"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/moodimage2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                app:srcCompat="@drawable/profile" />
 
             <TextView
                 android:id="@+id/name"
@@ -43,28 +43,64 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hobby"
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <TextView
+                android:id="@+id/hobby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/name"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Here's your mood for the past week."
+                android:layout_gravity="left"
+                android:padding="20dp"
+                android:text="Mood Graph"
                 app:layout_constraintBottom_toTopOf="@+id/textView5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="192dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:padding="10dp">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/chart"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="173dp"
                     android:padding="5dp">
 
                 </com.github.mikephil.charting.charts.BarChart>
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Mood Graph"
+                app:layout_constraintBottom_toTopOf="@+id/textView5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chartdass"
+                android:layout_width="match_parent"
+                android:layout_height="251dp"
+                android:padding="5dp">
+
+            </com.github.mikephil.charting.charts.BarChart>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -78,7 +114,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="Try our Depression and anxiety\nanalysis test!"
+                    android:text="Try the big five personality Test!"
                     app:layout_constraintBottom_toTopOf="@+id/textView5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -89,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center_vertical"
                     android:layout_margin="5dp"
-                    android:onClick="Dass"
+                    android:onClick="ocean"
                     android:padding="5dp"
                     android:text="Start"
                     app:layout_constraintBottom_toTopOf="@+id/button5"
@@ -107,9 +143,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_margin="5dp"
-                    android:onClick="mood"
+                    android:onClick="addsupport"
                     android:padding="5dp"
-                    android:text="mood"
+                    android:text="Add"
                     app:layout_constraintBottom_toBottomOf="@+id/button3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/button3" />
@@ -119,39 +155,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="Daily Mood Test Available!"
-                    app:layout_constraintBottom_toTopOf="@+id/textView5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp">
-
-                <Button
-                    android:id="@+id/button13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_margin="5dp"
-                    android:onClick="selfhealing"
-                    android:text="Go"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/button5"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/textViewmood3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical"
-                    android:text="Try the Self-Healing options!"
+                    android:paddingLeft="10dp"
+                    android:text="Add your support system!"
                     app:layout_constraintBottom_toTopOf="@+id/textView5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -169,25 +175,31 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_margin="5dp"
-                    android:onClick="supportrecieve"
-                    android:text="Go"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/button5"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:onClick="changeprofile"
+                    android:text="Go" />
 
                 <TextView
                     android:id="@+id/textViewmood2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="You're not feeling too well for the past\nweek. let's try asking for support!"
+                    android:paddingLeft="10dp"
+                    android:text="Change Name"
                     app:layout_constraintBottom_toTopOf="@+id/textView5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.cardview.widget.CardView>
 
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="logOut"
+                android:text="Logout"
+                app:layout_constraintBottom_toTopOf="@+id/button4"
+                app:layout_constraintStart_toStartOf="@+id/button4" />
         </LinearLayout>
     </ScrollView>
 

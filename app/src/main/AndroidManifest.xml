@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Recievesupport3"></activity>
+        <activity android:name=".BreathingStart"></activity>
+        <activity android:name=".BreathingActivity" />
+        <activity android:name=".SelfHealingActivity" />
+        <activity android:name=".MainProfileActivity" />
+        <activity android:name=".Recievesupport3" />
         <activity android:name=".RecieveSupport2" />
         <activity android:name=".Recievesupport" />
         <activity android:name=".Addsupport1" />
