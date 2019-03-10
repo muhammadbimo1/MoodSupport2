@@ -221,8 +221,8 @@ public class Recievesupport3 extends AppCompatActivity {
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "MoodSupport Tracking");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "hi, this is an automatic message from MoodSupport. Your friend is having a hard time lately, mind checking out?");
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             //finish();
