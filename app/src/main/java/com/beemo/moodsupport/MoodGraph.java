@@ -58,7 +58,7 @@ public class MoodGraph extends AppCompatActivity {
         final ArrayList<BarEntry> barEntries = new ArrayList<>();
         collectionReference = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("mood");
         documentReference = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("mood").document();
-        Query moodquery = collectionReference.orderBy("timestamp").limit(7);
+        Query moodquery = collectionReference.orderBy("timestamp", Query.Direction.DESCENDING).limit(15);
         moodquery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -70,8 +70,6 @@ public class MoodGraph extends AppCompatActivity {
                         moods.add(mood);
                     }
                     //graph
-
-
                     for(int i=0;i<moods.size();i++){
                         barEntries.add(new BarEntry(i,moods.get(i).getMood()));
                         Toast.makeText(MoodGraph.this, Integer.toString(moods.get(i).getMood()), Toast.LENGTH_SHORT).show();

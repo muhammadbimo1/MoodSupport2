@@ -87,4 +87,7 @@ public class MainMenu extends AppCompatActivity {
     public void graph(View v){
         startActivity(new Intent(MainMenu.this, MoodGraph.class));
     }
+    public void supportrecieve(View v){
+        startActivity(new Intent(MainMenu.this, Recievesupport.class));
+    }
 }

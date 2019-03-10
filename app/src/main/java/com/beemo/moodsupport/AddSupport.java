@@ -37,20 +37,22 @@ public class AddSupport extends AppCompatActivity {
     int tangible;
     int informational;
     int companionship;
-    DiscreteSeekBar discreteSeekBar1;
+    /*DiscreteSeekBar discreteSeekBar1;
     DiscreteSeekBar discreteSeekBar2;
     DiscreteSeekBar discreteSeekBar3;
-    DiscreteSeekBar discreteSeekBar4;
+    DiscreteSeekBar discreteSeekBar4;*/
     private RadioGroup radioGroup;
     String namestring = "";
     RadioButton radioButton1;
     RadioButton radioButton2;
-    TextView phoneno;
+    //TextView phoneno;
     private EditText name;
+    private EditText emailtext;
     //private EditText contactno;
-    private final static int REQUEST_CONTACTPICKER = 1;
+    // final static int REQUEST_CONTACTPICKER = 1;
     boolean closetie = false;
-    String numberphone = "";
+    //String numberphone = "";
+    String email = "";
 
     final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String TAG = "$NAME";
@@ -61,13 +63,15 @@ public class AddSupport extends AppCompatActivity {
         setContentView(R.layout.activity_add_support);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         name = (EditText) findViewById(R.id.name);
+        emailtext = (EditText) findViewById(R.id.email);
+
         //radioGroup.clearCheck();
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton rb = (RadioButton) group.findViewById(checkedId);
-                int selectedType;
+                //int selectedType;
                 if (null != rb) {
                     int check;
                     switch (checkedId) {
@@ -89,35 +93,34 @@ public class AddSupport extends AppCompatActivity {
 
 
     public void submit(View v) {
-        if(name.getText().toString().length()>0&&numberphone.length()>0) {
+        if(name.getText().toString().length()>0) {
 
-            discreteSeekBar1 = findViewById(R.id.discrete1);
+            /*discreteSeekBar1 = findViewById(R.id.discrete1);
             discreteSeekBar2 = findViewById(R.id.discrete2);
             discreteSeekBar3 = findViewById(R.id.discrete3);
             discreteSeekBar4 = findViewById(R.id.discrete4);
             emotional = discreteSeekBar1.getProgress();
             tangible = discreteSeekBar2.getProgress();
             informational = discreteSeekBar3.getProgress();
-            companionship = discreteSeekBar4.getProgress();
-            namestring =name.getText().toString();
+            companionship = discreteSeekBar4.getProgress();*/
+            namestring = name.getText().toString();
+            email = emailtext.getText().toString();
             //database stuff
             Date currentTime = Calendar.getInstance().getTime();
             Map<String, Object> dassdata = new HashMap<>();
             dassdata.put("name", namestring);
-            dassdata.put("contactno", numberphone);
+            dassdata.put("email", email);
             dassdata.put("closetie", closetie);
-            dassdata.put("emotional", emotional);
-            dassdata.put("tangible", tangible);
-            dassdata.put("informational", informational);
-            dassdata.put("companionship", companionship);
-            dassdata.put("burden", 100);
+            dassdata.put("burden", 0);
             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             //Toast.makeText(DASSActivity.this, "depression "+Integer.toString(depression)+" anxiety "+Integer.toString(anxiety)+"Stress: "+Integer.toString(stress), Toast.LENGTH_SHORT).show();
             db.collection("users").document(uid).collection("supportlist").add(dassdata).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override
                 public void onSuccess(DocumentReference documentReference) {
                     Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    startActivity(new Intent(AddSupport.this, MainMenu.class));
+                    Intent intent =new Intent(AddSupport.this, addSupport2.class);
+                    intent.putExtra("documentid", documentReference.getId());
+                    startActivity(intent);
                 }
             })
                     .addOnFailureListener(new OnFailureListener() {
@@ -134,14 +137,14 @@ public class AddSupport extends AppCompatActivity {
 
     }
 
-    public void contactPicker(View v) {
+    /*public void contactPicker(View v) {
         // This intent will fire up the contact picker dialog
         Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
         startActivityForResult(i, REQUEST_CONTACTPICKER);
-    }
+    }*/
 
     //@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+   /* protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CONTACTPICKER && resultCode == RESULT_OK) {
             Uri contactUri = data.getData();
             Cursor cursor = getContentResolver().query(contactUri, null, null, null, null);
@@ -153,5 +156,5 @@ public class AddSupport extends AppCompatActivity {
             phoneno.setText(numberphone);
             Log.d("phone number", cursor.getString(column));
         }
-    }
+    }*/
 }
