@@ -128,7 +128,7 @@ public void onCheckedChanged(RadioGroup group, int checkedId) {
         }
 
         //Toast.makeText(DASSActivity.this, rb.getText(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(DASSActivity.this, Integer.toString(score), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(DASSActivity.this, Integer.toString(score), Toast.LENGTH_SHORT).show();
         }
 
         }
@@ -165,7 +165,7 @@ public void endpersonalitytest(View v) {
         dassdata.put("stress", stress);
         dassdata.put("timestamp", FieldValue.serverTimestamp());
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Toast.makeText(DASSActivity.this, "depression "+Integer.toString(depression)+" anxiety "+Integer.toString(anxiety)+"Stress: "+Integer.toString(stress), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(DASSActivity.this, "depression "+Integer.toString(depression)+" anxiety "+Integer.toString(anxiety)+"Stress: "+Integer.toString(stress), Toast.LENGTH_SHORT).show();
         db.collection("users").document(uid).collection("dass").add(dassdata).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
         @Override
         public void onSuccess(DocumentReference documentReference) {

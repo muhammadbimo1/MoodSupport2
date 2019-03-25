@@ -1,5 +1,8 @@
 package com.beemo.moodsupport;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
@@ -30,8 +34,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.cardview.widget.CardView;
+
 public class MainMenu extends AppCompatActivity {
     private static final String TAG = "$NAME";
+    double total = 0;
+    double average = 0;
+    private Context mContext;
     final FirebaseFirestore db = FirebaseFirestore.getInstance();
     TextView name ;
     //TextView hobby ;
@@ -45,6 +54,7 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        mContext = getApplicationContext();
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         final DocumentReference docRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -67,7 +77,7 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
         FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -121,6 +131,20 @@ public class MainMenu extends AppCompatActivity {
         startActivity(new Intent(MainMenu.this, SelfHealingActivity.class));
     }
 
+    public void clickToggleButtonElapsed(View view) {
+        boolean isEnabled = ((ToggleButton)view).isEnabled();
+
+        if (isEnabled) {
+            Intent notifyIntent = new Intent(this,NotificationReciever.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast
+                    (getApplicationContext(), 2, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
+                    1000 * 60 * 60 * 24, pendingIntent);
+        } else {
+
+        }
+    }
 
     private void moodgraph(){
         //db = FirebaseFirestore.getInstance();
@@ -148,7 +172,7 @@ public class MainMenu extends AppCompatActivity {
                     //graph
                     for(int i=0;i<moods.size();i++){
                         barEntries.add(new BarEntry(i,moods.get(i).getMood()));
-                        Toast.makeText(MainMenu.this, Integer.toString(moods.get(i).getMood()), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainMenu.this, Integer.toString(moods.get(i).getMood()), Toast.LENGTH_SHORT).show();
                     }
                     BarDataSet barDataSet = new BarDataSet(barEntries,"date");
                     BarData data = new BarData(barDataSet);
@@ -162,6 +186,14 @@ public class MainMenu extends AppCompatActivity {
                     barChart.getAxisLeft().setDrawLabels(false);
                     barChart.getAxisRight().setDrawLabels(false);
                     barChart.animateY(500, Easing.EaseOutSine);
+                    for(int i=0;i<moods.size();i++) {
+                        total = total + moods.get(i).getMood();
+                        average = total / moods.size();
+                    }
+                    if(average<5){
+                        CardView card = findViewById(R.id.supportcard);
+                        card.setVisibility(View.VISIBLE);
+                    }
                 }
                 else {
                     Log.d("PUCK", "Error getting documents: ", task.getException());

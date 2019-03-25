@@ -18,7 +18,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textViewtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
@@ -27,7 +27,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/textviewcontent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,6 +68,8 @@ public class Recievesupport3 extends AppCompatActivity {
         tangible = extras.getInt("tangible");
         informational = extras.getInt("informational");
         companionship = extras.getInt("companionship");
+        final TextView texttitle = findViewById(R.id.textViewtitle);
+        final TextView textcontent = findViewById(R.id.textviewcontent);
         //see which one the most needed
         //int max = 0;
         //if(emotional>4){
@@ -145,10 +148,19 @@ public class Recievesupport3 extends AppCompatActivity {
                     }
 
                     //add the support to list
-                    ListView list = (ListView) findViewById(R.id.supportlist);
-                    ArrayAdapter adapter = new SupportListAdapter(Recievesupport3.this, R.layout.list_support,eligible);
-                    list.setAdapter(adapter);
-                    // Set The Adapter
+                    if(eligible.size()==0){
+                        texttitle.setText("Sorry!");
+                        textcontent.setText("There's no friends eligible to help you. Mind try contacting UUM's Counselling service?");
+                        Button button = findViewById(R.id.button13);
+                        button.setVisibility(View.INVISIBLE);
+                        //add uum counselling service
+
+                    }
+                    else{
+                        ListView list = (ListView) findViewById(R.id.supportlist);
+                        ArrayAdapter adapter = new SupportListAdapter(Recievesupport3.this, R.layout.list_support,eligible);
+                        list.setAdapter(adapter);
+                    }
 
 
                 }

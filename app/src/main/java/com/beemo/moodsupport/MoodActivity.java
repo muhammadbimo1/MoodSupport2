@@ -96,7 +96,7 @@ public class MoodActivity extends AppCompatActivity {
                         Log.w(TAG, "Error adding document", e);
                     }
                 });;
-        Toast.makeText(getApplicationContext(), Integer.toString(mood), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(), Integer.toString(mood), Toast.LENGTH_SHORT).show();
         startActivity(new Intent(MoodActivity.this, MainMenu.class));
     }
 }

@@ -61,6 +61,6 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.d(TAG, "DocumentSnapshot done mark successfully updated! to true");
             }
         });
-        startActivity(new Intent(ProfileActivity.this, MainMenu.class));
+        startActivity(new Intent(ProfileActivity.this, DASSActivity.class));
     }
 }
