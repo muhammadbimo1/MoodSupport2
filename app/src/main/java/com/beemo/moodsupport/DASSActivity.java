@@ -178,13 +178,16 @@ public void endpersonalitytest(View v) {
                     Log.w(TAG, "Error adding document", e);
                 }
             });;
-            //done
-                //depression: 3,5,10,13,16,17,21
-    //anxiety:2,4,7,9,15,18,19,20
-    //stress: 1,6,8,11,12,14,18
-    // add!
-        Intent intent = new Intent(DASSActivity.this, MainMenu.class);
-        startActivity(intent);
+
+        if(depression>11||anxiety>8||stress>13){
+            Intent intent = new Intent(DASSActivity.this, Recievesupport.class);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(DASSActivity.this, MainMenu.class);
+            startActivity(intent);
+        }
+
         //todo : finished
         }
         }

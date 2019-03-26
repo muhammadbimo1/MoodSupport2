@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Do you Have any hobbies?"
+        android:text="What Course are you taking right now?"
         android:textSize="18sp" />
 
     <EditText
@@ -50,7 +50,7 @@
         android:layout_gravity="left"
         android:layout_margin="10dp"
         android:ems="10"
-        android:hint="Hobby"
+        android:hint="Course"
         android:inputType="textPersonName"
         android:padding="10dp" />
 
